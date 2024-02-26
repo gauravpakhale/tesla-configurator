@@ -1,0 +1,49 @@
+<div class="container">
+  <h2>Step 3 : Summary</h2>
+  <h4>Your Tesla {{carSummary.description}}</h4>
+  <div class="row">
+    <div class="col-md-6">
+      <span>{{carSummary.config.description}}</span>
+      <div>
+        <small>Range: {{carSummary.config.range}} miles - Max speed: {{carSummary.config.speed}}</small>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <span>{{carSummary.config.price | currency}}</span>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <span>{{carSummary.color.description}} Color</span>
+    </div>
+    <div class="col-md-6">
+      <span>{{carSummary.color.price | currency}}</span>
+    </div>
+  </div>
+  <div class="row" *ngIf="carSummary?.towHitch">
+    <div class="col-md-6">
+      <span>Tow Hitch Package</span>
+    </div>
+    <div class="col-md-6">
+      <span>{{1000 | currency}}</span>
+    </div>
+  </div>
+  <div class="row" *ngIf="carSummary?.yoke">
+    <div class="col-md-6">
+      <span>Yoke Steering Wheel Package</span>
+    </div>
+    <div class="col-md-6">
+      <span>{{1000 | currency}}</span>
+    </div>
+  </div>
+  <hr class="hr hr-blurry" />
+  <div class="row">
+    <div class="col-md-6">
+      <h5>TOTAL COST</h5>
+    </div>
+    <div class="col-md-6">
+      <span>{{totalCost | currency}}</span>
+    </div>
+  </div>
+  <hr class="hr hr-blurry" />
+</div>

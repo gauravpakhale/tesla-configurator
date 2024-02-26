@@ -1,0 +1,19 @@
+<h2>Step 1 : Choose your Model and color</h2>
+<div class="flex-container">
+    <div>
+        <label for="modelSelect">Model:</label>
+        <select id="modelSelect" #selectedModel (change)="onModelChange(selectedModel.value)">
+            <option value="" disabled selected>Choose...</option>
+            <option *ngFor="let model of carModels" [selected]="model?.code == carSummary.code" [value]="model?.code">
+                {{model?.description}}</option>
+        </select>
+    </div>
+    <div *ngIf="carSummary?.code!='' && carSummary?.color?.description != ''">
+        <label for="colorSelect">Color:</label>
+        <select id="colorSelect" #selectedColor (change)="onColorChange(selectedColor.value)">
+            <option *ngFor="let color of selectedCarModel?.colors"
+                [selected]="color?.description == carSummary.color.description" [value]="color?.code">
+                {{color.description}}</option>
+        </select>
+    </div>
+</div>

@@ -1,0 +1,26 @@
+<h2>Step 2 : Select your config and options</h2>
+<div>
+    <label for="configSelect">Config:</label>
+    <select id="configSelect" #configSelect (change)="onConfigChange(configSelect.value)">
+        <option value="" disabled selected>Choose...</option>
+        <option *ngFor="let config of carConfigOptions?.configs"
+            [selected]="config?.description == carSummary.config.description">{{config.description}}</option>
+    </select>
+</div>
+
+<div *ngIf="selectedCarConfig">
+    <span>Range: {{selectedCarConfig.range}} miles - </span>
+    <span>Max Speed: {{selectedCarConfig.speed}} - </span>
+    <span>Cost: {{selectedCarConfig.price | currency}}</span>
+</div>
+
+<div *ngIf="carConfigOptions?.towHitch">
+    <label>Tow hitch?</label>
+    <input id="includeTow" name="towHitch" type="checkbox" (change)="onOptionChange($event)"
+        [checked]="carSummary.towHitch">
+</div>
+
+<div *ngIf="carConfigOptions?.yoke">
+    <label>Yoke steering wheel?</label>
+    <input id="includeYoke" name="yoke" type="checkbox" (change)="onOptionChange($event)" [checked]="carSummary.yoke">
+</div>
